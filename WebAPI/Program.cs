@@ -43,6 +43,13 @@ builder.Services.AddSwaggerGen(swagger =>
 });
 builder.Services.InfrastructureServices(builder.Configuration);
 
+builder.Services.AddCors(options => options.AddPolicy(name: "reactApp", policyBuilder =>
+    {
+        policyBuilder.WithOrigins("http://localhost:3000")
+            .AllowAnyMethod().AllowAnyHeader();
+    }
+));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -51,12 +58,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseCors("reactApp");
 
 app.Run();

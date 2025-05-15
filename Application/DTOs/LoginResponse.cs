@@ -1,4 +1,4 @@
 ﻿namespace Application.DTOs
 {
-    public record LoginResponse(bool Flag, string Message=null!, string Token=null!);
+    public record LoginResponse(bool Flag, string Message=null!, string Token=null!, string RefreshToken=null!);
 }

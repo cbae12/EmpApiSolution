@@ -12,5 +12,7 @@
         public string? Title { get; set; }
         public double? Exp { get; set; }
         public string? Department { get; set; }
+        public ICollection<Todo>? Todos { get; set; }
+        public string RefreshToken { get; set; } = string.Empty;
     }
 }

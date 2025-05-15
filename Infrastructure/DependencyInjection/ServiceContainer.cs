@@ -36,10 +36,12 @@ namespace Infrastructure.DependencyInjection
                     ValidIssuer = configuration["Jwt:Issuer"],
                     ValidAudience = configuration["Jwt:Audience"],
                     IssuerSigningKey = new SymmetricSecurityKey
-                    (Encoding.UTF8.GetBytes(configuration["Jwt:Key"]!))
+                    (Encoding.UTF8.GetBytes(configuration["Jwt:Key"]!)),
+                    ClockSkew = TimeSpan.Zero
                 };
             });
             services.AddScoped<IUser, UserRepo>();
+            services.AddScoped<ITodo, TodoRepo>();
             return services;
         }
     }

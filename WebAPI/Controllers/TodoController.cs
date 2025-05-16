@@ -19,7 +19,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("GET")]
+        [Route("GET/{id}")]
         public async Task<ActionResult<Todo>> GetTodo(int id)
         {
             Todo todo = await this.todo.GetTodoAsync(id);
